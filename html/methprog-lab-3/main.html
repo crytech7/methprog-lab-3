@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>methprog-lab-3.main API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>methprog-lab-3.main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import time
+from sortedcontainers import SortedDict
+
+SIMPLE_HASH_COLLISIONS = 0
+COMPLEX_HASH_COLLISIONS = 0
+
+
+class Object:
+    &#34;&#34;&#34;Объект требуемый в задании&#34;&#34;&#34;
+
+    def simpleHashString(self, string=&#39;&#39;):
+        &#39;&#39;&#39;Простая хеш-функция - сумма ascii кодов первых двух символов&#39;&#39;&#39;
+        hash = 0
+        hash += ord(string[0]) + ord(string[1])
+        return hash
+
+    def complexHashString(self, string=&#39;&#39;):
+        &#39;&#39;&#39;Сложная хеш-функция&#39;&#39;&#39;
+        hash = 0
+        for i in range(len(string)):
+            # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
+            hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(
+                string[i])) ** (ord(string[i]))) % (2 ** 64)
+        return hash
+
+    def __init__(self, Country, Club_Name, City, Year, Coach_Name, Points, hashtype=&#34;simple&#34;):
+        &#34;&#34;&#34;Конструктор&#34;&#34;&#34;
+        self.Country = Country
+        self.Club_Name = Club_Name
+        if hashtype == &#34;simple&#34;:  # Если хеширование &#34;простое&#34;
+            self.Club_NameHash = self.simpleHashString(self.Club_Name)
+        elif hashtype == &#34;complex&#34;:  # Если хеширование &#34;сложное&#34;
+            self.Club_NameHash = self.simpleHashString(self.Club_Name)
+        self.City = City
+        self.Year = Year
+        self.Coach_Name = Coach_Name
+        self.Points = Points
+
+    def __gt__(self, other):
+        &#34;&#34;&#34;operator &gt; overloading&#34;&#34;&#34;
+
+        if self.Year &gt; other.Year:
+            return True
+        elif self.Year &lt; other.Year:
+            return False
+        elif self.Year == other.Year:
+            if self.Country &gt; other.Country:
+                return True
+            elif self.Country &lt; other.Country:
+                return False
+            elif self.Country == other.Country:
+                if self.Points &gt; other.Points:
+                    return True
+                elif self.Points &lt; other.Points:
+                    return False
+                elif self.Points == other.Points:
+                    if self.Club_Name &gt; other.Club_Name:
+                        return True
+                    elif self.Club_Name &lt; other.Club_Name:
+                        return False
+                    elif self.Club_Name == other.Club_Name:
+                        return False
+
+    def __lt__(self, other):
+        &#34;&#34;&#34;operator &lt; overloading&#34;&#34;&#34;
+
+        return other &gt; self
+
+    def __ge__(self, other):
+        &#34;&#34;&#34;operator &gt;= overloading&#34;&#34;&#34;
+
+        if self.Year &gt; other.Year:
+            return True
+        elif self.Year &lt; other.Year:
+            return False
+        elif self.Year == other.Year:
+            if self.Country &gt; other.Country:
+                return True
+            elif self.Country &lt; other.Country:
+                return False
+            elif self.Country == other.Country:
+                if self.Points &gt; other.Points:
+                    return True
+                elif self.Points &lt; other.Points:
+                    return False
+                elif self.Points == other.Points:
+                    if self.Club_Name &gt; other.Club_Name:
+                        return True
+                    elif self.Club_Name &lt; other.Club_Name:
+                        return False
+                    elif self.Club_Name == other.Club_Name:
+                        return True
+
+    def __le__(self, other):
+        &#34;&#34;&#34;operator &lt;= overloading&#34;&#34;&#34;
+
+        return other &gt;= self
+
+    def __eq__(self, other):
+        &#34;&#34;&#34;operator == overloading&#34;&#34;&#34;
+        # Country,Club_Name,City,Year,Coach_Name,Points
+        return self.Year == other.Year and self.Country == other.Country and \
+            self.Points == other.Points and self.Club_Name == other.Club_Name and \
+            self.City == other.City and self.Coach_Name == other.Coach_Name
+
+
+def complexHashString(string):
+    &#39;&#39;&#39;Функция для хеширования чуть более сложным хешем&#39;&#39;&#39;
+    hash = 0
+    for i in range(len(string)):
+        # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
+        hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(string[i])) ** (
+            ord(string[i]))) % (2 ** 64)
+    return hash
+
+
+def simpleHashString(string):
+    &#39;&#39;&#39;Функция для хеширования простым хешем&#39;&#39;&#39;
+    hash = 0
+    hash += ord(string[0]) + ord(string[1])
+    return hash
+
+
+def hashTable(objectsArray, type=&#34;simple&#34;):
+    &#39;&#39;&#39;Делаем из списка объектов хэш-таблицу&#39;&#39;&#39;
+    map = SortedDict()
+    for i in objectsArray:
+        if i.Club_NameHash not in map.keys():
+            map[i.Club_NameHash] = [i]
+        else:  # Если произошла коллизия
+            map[i.Club_NameHash].append(i)
+    return map
+
+
+def find(string, hashTable, hashtype=&#34;simple&#34;):
+    global SIMPLE_HASH_COLLISIONS
+    global COMPLEX_HASH_COLLISIONS
+    try:
+        if hashtype == &#34;simple&#34;:  # пример для простого алгоритма хеширования
+            result = hashTable[simpleHashString(string)]
+            if len(result) == 1:  # Если коллизий нет
+                return result[0]
+            elif len(result) &gt; 1:  # Если коллизии есть
+                for i in result:
+                    SIMPLE_HASH_COLLISIONS += 1
+                    if i.Club_Name == string:
+                        return i
+        elif hashtype == &#34;complex&#34;:
+            result = hashTable[complexHashString(string)]  # пример для чуть более сложного алгоритма хеширования
+            if len(result) == 1:  # Если коллизий нет
+                return result[0]
+            elif len(result) &gt; 1:  # Если коллизии есть
+                for i in result:
+                    COMPLEX_HASH_COLLISIONS += 1
+                    if i.Club_Name == string:
+                        return i
+    except KeyError:
+        return -1
+
+
+size = [10, 100, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
+EXPERIMENTS_AMOUNT = 11
+
+if __name__ == &#34;__main__&#34;:
+    simple_hash_times = []
+    complex_hash_times = []
+    meta_simple_hash_times = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    meta_complex_hash_times = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    meta_complex_collisions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    meta_simple_collisions = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for times in range(EXPERIMENTS_AMOUNT):
+        simple_hash_times = []
+        complex_hash_times = []
+        simple_collisions = []
+        complex_collisions = []
+        for i in range(len(size)):
+            &#34;&#34;&#34;Сортируем нагенеренное&#34;&#34;&#34;
+            f = open(&#34;ds_&#34; + str(size[i]) + &#34;.csv&#34;, &#39;r&#39;)
+            arr = []
+            print(&#34;STARTING SIZE&#34;, size[i])
+            for j in f.readlines():
+                temp = j.split(&#34;,&#34;)
+                arr.append(Object(temp[0], temp[1], temp[2], int(temp[3]), temp[4], int(temp[5]), hashtype=&#34;simple&#34;))
+            f.close()
+
+            hashTableUnit = hashTable(arr, type=&#34;simple&#34;)
+            time1 = time.time()
+            item = find(&#34;Atletico Madrid&#34;, hashTableUnit, hashtype=&#34;simple&#34;)
+            time2 = time.time() - time1
+            simple_collisions.append(SIMPLE_HASH_COLLISIONS)
+            SIMPLE_HASH_COLLISIONS = 0
+            simple_hash_times.append(time2)
+            print(&#34;simple hash, size&#34;, size[i], &#34;:&#34;, time2, )
+
+        for i in range(len(size)):
+            &#34;&#34;&#34;Сортируем нагенеренное&#34;&#34;&#34;
+            f = open(&#34;ds_&#34; + str(size[i]) + &#34;.csv&#34;, &#39;r&#39;)
+            arr = []
+            print(&#34;STARTING SIZE&#34;, size[i])
+            for j in f.readlines():
+                temp = j.split(&#34;,&#34;)
+                arr.append(Object(temp[0], temp[1], temp[2], int(temp[3]), temp[4], int(temp[5]), hashtype=&#34;complex&#34;))
+            f.close()
+
+            hashTableUnit = hashTable(arr, type=&#34;complex&#34;)
+            # print(hashTableUnit)
+            time1 = time.time()
+            item = find(&#34;Atletico Madrid&#34;, hashTableUnit, hashtype=&#34;complex&#34;)
+            time2 = time.time() - time1
+            complex_collisions.append(COMPLEX_HASH_COLLISIONS)
+            COMPLEX_HASH_COLLISIONS = 0
+            complex_hash_times.append(time2)
+            print(&#34;complex hash, size&#34;, size[i], &#34;:&#34;, time2)
+
+        print(simple_hash_times)
+        print(complex_hash_times)
+        for amount in range(len(simple_hash_times)):
+            meta_simple_hash_times[amount] += simple_hash_times[amount]
+            meta_complex_hash_times[amount] += complex_hash_times[amount]
+            meta_simple_collisions[amount] += simple_collisions[amount]
+            meta_complex_collisions[amount] += complex_collisions[amount]
+
+    for i in range(len(meta_simple_hash_times)):
+        meta_simple_hash_times[i] /= EXPERIMENTS_AMOUNT
+        meta_complex_hash_times[i] /= EXPERIMENTS_AMOUNT
+        meta_complex_collisions[i] //= EXPERIMENTS_AMOUNT
+        meta_simple_collisions[i] //= EXPERIMENTS_AMOUNT
+    print(&#34;meta_simple_hash_times =&#34;, meta_simple_hash_times)
+    print(&#34;meta_complex_hash_times =&#34;, meta_complex_hash_times)
+    print(&#34;meta_simple_collisions =&#34;, meta_simple_collisions)
+    print(&#34;meta_complex_collisions =&#34;, meta_complex_collisions)
+ </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="methprog-lab-3.main.complexHashString"><code class="name flex">
+<span>def <span class="ident">complexHashString</span></span>(<span>string)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Функция для хеширования чуть более сложным хешем</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def complexHashString(string):
+    &#39;&#39;&#39;Функция для хеширования чуть более сложным хешем&#39;&#39;&#39;
+    hash = 0
+    for i in range(len(string)):
+        # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
+        hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(string[i])) ** (
+            ord(string[i]))) % (2 ** 64)
+    return hash</code></pre>
+</details>
+</dd>
+<dt id="methprog-lab-3.main.find"><code class="name flex">
+<span>def <span class="ident">find</span></span>(<span>string, hashTable, hashtype='simple')</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def find(string, hashTable, hashtype=&#34;simple&#34;):
+    global SIMPLE_HASH_COLLISIONS
+    global COMPLEX_HASH_COLLISIONS
+    try:
+        if hashtype == &#34;simple&#34;:  # пример для простого алгоритма хеширования
+            result = hashTable[simpleHashString(string)]
+            if len(result) == 1:  # Если коллизий нет
+                return result[0]
+            elif len(result) &gt; 1:  # Если коллизии есть
+                for i in result:
+                    SIMPLE_HASH_COLLISIONS += 1
+                    if i.Club_Name == string:
+                        return i
+        elif hashtype == &#34;complex&#34;:
+            result = hashTable[complexHashString(string)]  # пример для чуть более сложного алгоритма хеширования
+            if len(result) == 1:  # Если коллизий нет
+                return result[0]
+            elif len(result) &gt; 1:  # Если коллизии есть
+                for i in result:
+                    COMPLEX_HASH_COLLISIONS += 1
+                    if i.Club_Name == string:
+                        return i
+    except KeyError:
+        return -1</code></pre>
+</details>
+</dd>
+<dt id="methprog-lab-3.main.hashTable"><code class="name flex">
+<span>def <span class="ident">hashTable</span></span>(<span>objectsArray, type='simple')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Делаем из списка объектов хэш-таблицу</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hashTable(objectsArray, type=&#34;simple&#34;):
+    &#39;&#39;&#39;Делаем из списка объектов хэш-таблицу&#39;&#39;&#39;
+    map = SortedDict()
+    for i in objectsArray:
+        if i.Club_NameHash not in map.keys():
+            map[i.Club_NameHash] = [i]
+        else:  # Если произошла коллизия
+            map[i.Club_NameHash].append(i)
+    return map</code></pre>
+</details>
+</dd>
+<dt id="methprog-lab-3.main.simpleHashString"><code class="name flex">
+<span>def <span class="ident">simpleHashString</span></span>(<span>string)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Функция для хеширования простым хешем</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def simpleHashString(string):
+    &#39;&#39;&#39;Функция для хеширования простым хешем&#39;&#39;&#39;
+    hash = 0
+    hash += ord(string[0]) + ord(string[1])
+    return hash</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="methprog-lab-3.main.Object"><code class="flex name class">
+<span>class <span class="ident">Object</span></span>
+<span>(</span><span>Country, Club_Name, City, Year, Coach_Name, Points, hashtype='simple')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Объект требуемый в задании</p>
+<p>Конструктор</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Object:
+    &#34;&#34;&#34;Объект требуемый в задании&#34;&#34;&#34;
+
+    def simpleHashString(self, string=&#39;&#39;):
+        &#39;&#39;&#39;Простая хеш-функция - сумма ascii кодов первых двух символов&#39;&#39;&#39;
+        hash = 0
+        hash += ord(string[0]) + ord(string[1])
+        return hash
+
+    def complexHashString(self, string=&#39;&#39;):
+        &#39;&#39;&#39;Сложная хеш-функция&#39;&#39;&#39;
+        hash = 0
+        for i in range(len(string)):
+            # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
+            hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(
+                string[i])) ** (ord(string[i]))) % (2 ** 64)
+        return hash
+
+    def __init__(self, Country, Club_Name, City, Year, Coach_Name, Points, hashtype=&#34;simple&#34;):
+        &#34;&#34;&#34;Конструктор&#34;&#34;&#34;
+        self.Country = Country
+        self.Club_Name = Club_Name
+        if hashtype == &#34;simple&#34;:  # Если хеширование &#34;простое&#34;
+            self.Club_NameHash = self.simpleHashString(self.Club_Name)
+        elif hashtype == &#34;complex&#34;:  # Если хеширование &#34;сложное&#34;
+            self.Club_NameHash = self.simpleHashString(self.Club_Name)
+        self.City = City
+        self.Year = Year
+        self.Coach_Name = Coach_Name
+        self.Points = Points
+
+    def __gt__(self, other):
+        &#34;&#34;&#34;operator &gt; overloading&#34;&#34;&#34;
+
+        if self.Year &gt; other.Year:
+            return True
+        elif self.Year &lt; other.Year:
+            return False
+        elif self.Year == other.Year:
+            if self.Country &gt; other.Country:
+                return True
+            elif self.Country &lt; other.Country:
+                return False
+            elif self.Country == other.Country:
+                if self.Points &gt; other.Points:
+                    return True
+                elif self.Points &lt; other.Points:
+                    return False
+                elif self.Points == other.Points:
+                    if self.Club_Name &gt; other.Club_Name:
+                        return True
+                    elif self.Club_Name &lt; other.Club_Name:
+                        return False
+                    elif self.Club_Name == other.Club_Name:
+                        return False
+
+    def __lt__(self, other):
+        &#34;&#34;&#34;operator &lt; overloading&#34;&#34;&#34;
+
+        return other &gt; self
+
+    def __ge__(self, other):
+        &#34;&#34;&#34;operator &gt;= overloading&#34;&#34;&#34;
+
+        if self.Year &gt; other.Year:
+            return True
+        elif self.Year &lt; other.Year:
+            return False
+        elif self.Year == other.Year:
+            if self.Country &gt; other.Country:
+                return True
+            elif self.Country &lt; other.Country:
+                return False
+            elif self.Country == other.Country:
+                if self.Points &gt; other.Points:
+                    return True
+                elif self.Points &lt; other.Points:
+                    return False
+                elif self.Points == other.Points:
+                    if self.Club_Name &gt; other.Club_Name:
+                        return True
+                    elif self.Club_Name &lt; other.Club_Name:
+                        return False
+                    elif self.Club_Name == other.Club_Name:
+                        return True
+
+    def __le__(self, other):
+        &#34;&#34;&#34;operator &lt;= overloading&#34;&#34;&#34;
+
+        return other &gt;= self
+
+    def __eq__(self, other):
+        &#34;&#34;&#34;operator == overloading&#34;&#34;&#34;
+        # Country,Club_Name,City,Year,Coach_Name,Points
+        return self.Year == other.Year and self.Country == other.Country and \
+            self.Points == other.Points and self.Club_Name == other.Club_Name and \
+            self.City == other.City and self.Coach_Name == other.Coach_Name</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="methprog-lab-3.main.Object.complexHashString"><code class="name flex">
+<span>def <span class="ident">complexHashString</span></span>(<span>self, string='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Сложная хеш-функция</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def complexHashString(self, string=&#39;&#39;):
+    &#39;&#39;&#39;Сложная хеш-функция&#39;&#39;&#39;
+    hash = 0
+    for i in range(len(string)):
+        # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
+        hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(
+            string[i])) ** (ord(string[i]))) % (2 ** 64)
+    return hash</code></pre>
+</details>
+</dd>
+<dt id="methprog-lab-3.main.Object.simpleHashString"><code class="name flex">
+<span>def <span class="ident">simpleHashString</span></span>(<span>self, string='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Простая хеш-функция - сумма ascii кодов первых двух символов</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def simpleHashString(self, string=&#39;&#39;):
+    &#39;&#39;&#39;Простая хеш-функция - сумма ascii кодов первых двух символов&#39;&#39;&#39;
+    hash = 0
+    hash += ord(string[0]) + ord(string[1])
+    return hash</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="methprog-lab-3" href="index.html">methprog-lab-3</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="methprog-lab-3.main.complexHashString" href="#methprog-lab-3.main.complexHashString">complexHashString</a></code></li>
+<li><code><a title="methprog-lab-3.main.find" href="#methprog-lab-3.main.find">find</a></code></li>
+<li><code><a title="methprog-lab-3.main.hashTable" href="#methprog-lab-3.main.hashTable">hashTable</a></code></li>
+<li><code><a title="methprog-lab-3.main.simpleHashString" href="#methprog-lab-3.main.simpleHashString">simpleHashString</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="methprog-lab-3.main.Object" href="#methprog-lab-3.main.Object">Object</a></code></h4>
+<ul class="">
+<li><code><a title="methprog-lab-3.main.Object.complexHashString" href="#methprog-lab-3.main.Object.complexHashString">complexHashString</a></code></li>
+<li><code><a title="methprog-lab-3.main.Object.simpleHashString" href="#methprog-lab-3.main.Object.simpleHashString">simpleHashString</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
