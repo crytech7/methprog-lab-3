@@ -3,6 +3,8 @@ from sortedcontainers import SortedDict
 
 SIMPLE_HASH_COLLISIONS = 0
 COMPLEX_HASH_COLLISIONS = 0
+SIMPLE_CLUBS = 0
+COMPLEX_CLUBS = 0
 
 
 class Object:
@@ -12,7 +14,7 @@ class Object:
         '''Простая хеш-функция - сумма ascii кодов первых двух символов'''
         hash = 0
         hash += ord(string[0]) + ord(string[1])
-        return hash
+        return hash % (10 ** 8)
 
     def complexHashString(self, string=''):
         '''Сложная хеш-функция'''
@@ -20,8 +22,8 @@ class Object:
         for i in range(len(string)):
             # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
             hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(
-                string[i])) ** (ord(string[i]))) % (2 ** 64)
-        return hash
+                string[i])) ** (ord(string[i])))
+        return hash % (10 ** 128)
 
     def __init__(self, Country, Club_Name, City, Year, Coach_Name, Points, hashtype="simple"):
         """Конструктор"""
@@ -30,7 +32,7 @@ class Object:
         if hashtype == "simple":  # Если хеширование "простое"
             self.Club_NameHash = self.simpleHashString(self.Club_Name)
         elif hashtype == "complex":  # Если хеширование "сложное"
-            self.Club_NameHash = self.simpleHashString(self.Club_Name)
+            self.Club_NameHash = self.complexHashString(self.Club_Name)
         self.City = City
         self.Year = Year
         self.Coach_Name = Coach_Name
@@ -110,15 +112,15 @@ def complexHashString(string):
     for i in range(len(string)):
         # hash += (((ord(string[i]) ** i) % (2 ** 64) - ord(string[i]) ** 2) ** (ord(string[i]) ** ord(string[i]))) % (2 ** 64)
         hash += (((ord(string[i]) ** (i * i * ord(string[i])) % (2 ** 64)) - ord(string[i]) ** 2 // ord(string[i])) ** (
-            ord(string[i]))) % (2 ** 64)
-    return hash
+            ord(string[i])))
+    return hash % (10 ** 128)
 
 
 def simpleHashString(string):
     '''Функция для хеширования простым хешем'''
     hash = 0
     hash += ord(string[0]) + ord(string[1])
-    return hash
+    return hash % (10 ** 8)
 
 
 def hashTable(objectsArray, type="simple"):
@@ -135,14 +137,19 @@ def hashTable(objectsArray, type="simple"):
 def find(string, hashTable, hashtype="simple"):
     global SIMPLE_HASH_COLLISIONS
     global COMPLEX_HASH_COLLISIONS
+    global SIMPLE_CLUBS
+    global COMPLEX_CLUBS
+
     try:
         if hashtype == "simple":  # пример для простого алгоритма хеширования
             result = hashTable[simpleHashString(string)]
             if len(result) == 1:  # Если коллизий нет
                 return result[0]
             elif len(result) > 1:  # Если коллизии есть
+                SIMPLE_CLUBS.append(string)
                 for i in result:
-                    SIMPLE_HASH_COLLISIONS += 1
+                    if i.Club_Name not in SIMPLE_CLUBS:
+                        SIMPLE_HASH_COLLISIONS += 1
                     if i.Club_Name == string:
                         return i
         elif hashtype == "complex":
@@ -150,8 +157,10 @@ def find(string, hashTable, hashtype="simple"):
             if len(result) == 1:  # Если коллизий нет
                 return result[0]
             elif len(result) > 1:  # Если коллизии есть
+                COMPLEX_CLUBS.append(string)
                 for i in result:
-                    COMPLEX_HASH_COLLISIONS += 1
+                    if i.Club_Name not in COMPLEX_CLUBS:
+                        COMPLEX_HASH_COLLISIONS += 1
                     if i.Club_Name == string:
                         return i
     except KeyError:
@@ -159,7 +168,7 @@ def find(string, hashTable, hashtype="simple"):
 
 
 size = [10, 100, 10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000, 100000]
-EXPERIMENTS_AMOUNT = 11
+EXPERIMENTS_AMOUNT = 1
 
 if __name__ == "__main__":
     simple_hash_times = []
@@ -183,12 +192,14 @@ if __name__ == "__main__":
                 arr.append(Object(temp[0], temp[1], temp[2], int(temp[3]), temp[4], int(temp[5]), hashtype="simple"))
             f.close()
 
-            hashTableUnit = hashTable(arr, type="simple")
+            hashTableUnit1 = hashTable(arr, type="simple")
+            # print(hashTableUnit1)
             time1 = time.time()
-            item = find("Atletico Madrid", hashTableUnit, hashtype="simple")
+            item = find("Atletico Madrid", hashTableUnit1, hashtype="simple")
             time2 = time.time() - time1
             simple_collisions.append(SIMPLE_HASH_COLLISIONS)
             SIMPLE_HASH_COLLISIONS = 0
+            SIMPLE_CLUBS = []
             simple_hash_times.append(time2)
             print("simple hash, size", size[i], ":", time2, )
 
@@ -202,13 +213,14 @@ if __name__ == "__main__":
                 arr.append(Object(temp[0], temp[1], temp[2], int(temp[3]), temp[4], int(temp[5]), hashtype="complex"))
             f.close()
 
-            hashTableUnit = hashTable(arr, type="complex")
-            # print(hashTableUnit)
+            hashTableUnit2 = hashTable(arr, type="complex")
+            # print(hashTableUnit2)
             time1 = time.time()
-            item = find("Atletico Madrid", hashTableUnit, hashtype="complex")
+            item = find("Atletico Madrid", hashTableUnit2, hashtype="complex")
             time2 = time.time() - time1
             complex_collisions.append(COMPLEX_HASH_COLLISIONS)
             COMPLEX_HASH_COLLISIONS = 0
+            COMPLEX_CLUBS = []
             complex_hash_times.append(time2)
             print("complex hash, size", size[i], ":", time2)
 
